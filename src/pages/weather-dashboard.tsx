@@ -1,7 +1,46 @@
+import WeatherSkeleton from "@/components/loading-skeleton";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
-import { RefreshCw } from "lucide-react";
+import { useGeolocation } from "@/hooks/use-geolocation";
+import { AlertCircle, MapPin, RefreshCw } from "lucide-react";
 
 const WeatherDashboard = () => {
+  const {
+    coordinates,
+    error: loacationError,
+    getLocation,
+    isLoading: loacationLoading,
+  } = useGeolocation();
+
+  const handleRefresh = () => {
+    getLocation();
+    if (coordinates) {
+      // reload weather data
+    }
+  };
+
+  // 加載動畫
+  if (loacationLoading) {
+    return <WeatherSkeleton />;
+  }
+
+  // 錯誤警告
+  if (loacationError) {
+    return (
+      <Alert variant="destructive">
+        <AlertCircle className="h-4 w-4" />
+        <AlertTitle>Location Error</AlertTitle>
+        <AlertDescription className="flex flex-col gap-4">
+          <p>{loacationError}</p>
+          <Button onClick={getLocation} variant={"outline"} className="w-fit">
+            <MapPin className="mr-2 h-4 w-4" />
+            Enable Location
+          </Button>
+        </AlertDescription>
+      </Alert>
+    );
+  }
+
   return (
     <div className="space-y-4">
       {/* Favorite Cities */}
@@ -10,7 +49,7 @@ const WeatherDashboard = () => {
         <Button
           variant={"outline"}
           size={"icon"}
-          // onClick={handleRefresh}
+          onClick={handleRefresh}
           // disabled={}
         >
           <RefreshCw className="h-4 w-4" />
