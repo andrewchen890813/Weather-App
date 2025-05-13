@@ -11,6 +11,7 @@ import {
 import { AlertCircle, MapPin, RefreshCw } from "lucide-react";
 
 const WeatherDashboard = () => {
+  // 使用者位置狀態
   const {
     coordinates,
     error: loacationError,
@@ -18,6 +19,7 @@ const WeatherDashboard = () => {
     isLoading: loacationLoading,
   } = useGeolocation();
 
+  // 取得天氣資料
   const weatherQuery = useWeatherQuery(coordinates);
   const forecastQuery = useForecastQuery(coordinates);
   const locationQuery = useReverseGeocodeQuery(coordinates);
