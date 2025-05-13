@@ -58,6 +58,15 @@ class WeatherAPI {
     });
     return this.fetchData<GeocodingResponse[]>(url);
   }
+
+  // 搜尋地區
+  async searchLocations(query: string): Promise<GeocodingResponse[]> {
+    const url = this.createUrl(`${API_CONFIG.GEO}/direct`, {
+      q: query,
+      limit: 1,
+    });
+    return this.fetchData<GeocodingResponse[]>(url);
+  }
 }
 
 export const weatherAPI = new WeatherAPI();
