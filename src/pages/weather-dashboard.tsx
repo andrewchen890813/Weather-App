@@ -11,7 +11,7 @@ import {
   useReverseGeocodeQuery,
   useWeatherQuery,
 } from "@/hooks/use-weather";
-import { AlertCircle, MapPin, RefreshCw } from "lucide-react";
+import { AlertCircle, AlertTriangle, MapPin, RefreshCw } from "lucide-react";
 
 const WeatherDashboard = () => {
   // 使用者位置狀態
@@ -79,7 +79,7 @@ const WeatherDashboard = () => {
   if (weatherQuery.error || forecastQuery.error) {
     return (
       <Alert variant="destructive">
-        <AlertCircle className="h-4 w-4" />
+        <AlertTriangle className="h-4 w-4" />
         <AlertTitle>Error</AlertTitle>
         <AlertDescription className="flex flex-col gap-4">
           <p>Failed to fetch weather data. Please try again.</p>
