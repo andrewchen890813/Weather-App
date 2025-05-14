@@ -12,11 +12,11 @@ const Header = () => {
         <Link to={"/"}>
           <img
             src={theme === "dark" ? "/logo.png" : "/logo2.png"}
-            alt="Klimate Logo"
+            alt="Weather Logo"
             className="h-14"
           />
         </Link>
-        <div className="flex gap-4">
+        <div className="flex gap-2">
           {/* search */}
           <CitySearch />
 
