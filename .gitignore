@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+
+hosting.*.cache
+firebase-hosting-merge*
+firebase-hosting-pull-*
