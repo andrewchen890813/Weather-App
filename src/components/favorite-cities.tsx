@@ -57,7 +57,7 @@ function FavoriteCityTablet({
       className="relative flex min-w-[250px] cursor-pointer items-center gap-3 rounded-lg border bg-card p-4 pr-8 shadow-sm transition-all hover:shadow-md"
     >
       <Button
-        className="absolute right-1 top-1 h-6 w-6 w-6 rounded-full p-0"
+        className="absolute right-1 top-1 h-6 w-6  rounded-full p-0"
         onClick={(e) => {
           e.stopPropagation();
           onRemove(id);

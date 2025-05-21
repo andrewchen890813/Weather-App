@@ -77,6 +77,7 @@ const WeatherDashboard = () => {
   }
 
   const locationName = locationQuery.data?.[0];
+  // console.log(locationName);
 
   if (weatherQuery.error || forecastQuery.error) {
     return (
