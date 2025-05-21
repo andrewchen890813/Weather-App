@@ -7,7 +7,7 @@ interface CurrentWeatherPorps {
   locationName?: GeocodingResponse;
 }
 
-const currentWeather = ({ data, locationName }: CurrentWeatherPorps) => {
+const CurrentWeather = ({ data, locationName }: CurrentWeatherPorps) => {
   const {
     weather: [currentWeather],
     main: { temp, feels_like, temp_min, temp_max, humidity },
@@ -98,4 +98,4 @@ const currentWeather = ({ data, locationName }: CurrentWeatherPorps) => {
   );
 };
 
-export default currentWeather;
+export default CurrentWeather;
