@@ -6,8 +6,9 @@ import {
   WeatherData,
 } from "./types";
 
+// 天氣 API
 class WeatherAPI {
-  // 組出API網址
+  // 組出網址(網址，參數組)
   private createUrl(endpoint: string, params: Record<string, string | number>) {
     const searchParams = new URLSearchParams({
       appid: API_CONFIG.API_KEY,
@@ -26,27 +27,27 @@ class WeatherAPI {
     return response.json();
   }
 
-  //   目前天氣
+  //   取得目前天氣
   async getCurrentWeather({ lat, lon }: Coordinates): Promise<WeatherData> {
     const url = this.createUrl(`${API_CONFIG.BASE_URL}/weather`, {
       lat: lat.toString(),
       lon: lon.toString(),
-      units: API_CONFIG.DEFAULT_PARAMS.unites,
+      units: API_CONFIG.DEFAULT_PARAMS.units,
     });
     return this.fetchData<WeatherData>(url);
   }
 
-  //   未來天氣
+  //   取得未來天氣
   async getForecast({ lat, lon }: Coordinates): Promise<ForecastData> {
     const url = this.createUrl(`${API_CONFIG.BASE_URL}/forecast`, {
       lat: lat.toString(),
       lon: lon.toString(),
-      units: API_CONFIG.DEFAULT_PARAMS.unites,
+      units: API_CONFIG.DEFAULT_PARAMS.units,
     });
     return this.fetchData<ForecastData>(url);
   }
 
-  // 地理編碼
+  // 反向地理編碼（經緯度查地名）
   async reverseGeocode({
     lat,
     lon,
@@ -59,7 +60,7 @@ class WeatherAPI {
     return this.fetchData<GeocodingResponse[]>(url);
   }
 
-  // 搜尋地區
+  // 關鍵字搜尋地區
   async searchLocations(query: string): Promise<GeocodingResponse[]> {
     const url = this.createUrl(`${API_CONFIG.GEO}/direct`, {
       q: query,

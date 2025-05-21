@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import CitySearch from "./city-search";
 
 const Header = () => {
+  // 明暗狀態
   const { theme, setTheme } = useTheme();
   const isDark = theme === "dark";
   return (

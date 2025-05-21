@@ -1,3 +1,4 @@
+// 用來表示這個元件可以接受 children
 import { PropsWithChildren } from "react";
 import Header from "./header";
 

@@ -19,8 +19,8 @@ const WeatherDashboard = () => {
   const {
     coordinates,
     error: loacationError,
-    getLocation,
     isLoading: loacationLoading,
+    getLocation,
   } = useGeolocation();
 
   // 取得天氣資料
