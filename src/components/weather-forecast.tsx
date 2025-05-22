@@ -22,6 +22,7 @@ interface DailyForcasts {
 
 const WeatherForecast = ({ data }: WeatherForecastProps) => {
   const dailyForcasts = data.list.reduce((acc, forecast) => {
+    // 以每日為單位
     const date = format(new Date(forecast.dt * 1000), "yyyy-MM-dd");
 
     if (!acc[date]) {
@@ -35,7 +36,7 @@ const WeatherForecast = ({ data }: WeatherForecastProps) => {
       };
     } else {
       acc[date].temp_min = Math.min(acc[date].temp_min, forecast.main.temp_min);
-      acc[date].temp_max = Math.min(acc[date].temp_min, forecast.main.temp_max);
+      acc[date].temp_max = Math.max(acc[date].temp_min, forecast.main.temp_max);
     }
     return acc;
   }, {} as Record<string, DailyForcasts>);

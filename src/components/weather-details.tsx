@@ -20,6 +20,7 @@ const WeatherDetails = ({ data }: WeatherDetailsProps) => {
 
     return directions[index];
   };
+
   const details = [
     {
       title: "Sunrise",

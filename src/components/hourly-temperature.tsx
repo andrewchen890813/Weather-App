@@ -20,6 +20,7 @@ const HourlyTemperature = ({ data }: HourlyTemperatureProps) => {
     temp: Math.round(item.main.temp),
     feels_like: Math.round(item.main.feels_like),
   }));
+  // console.log(data);
 
   return (
     <Card className="flex-1">
