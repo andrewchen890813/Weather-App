@@ -40,9 +40,12 @@ const WeatherForecast = ({ data }: WeatherForecastProps) => {
     }
     return acc;
   }, {} as Record<string, DailyForcasts>);
+  console.log(dailyForcasts);
 
   // 轉陣列取前六筆
   const nextDays = Object.values(dailyForcasts).slice(0, 6);
+  console.log(nextDays);
+
   // 溫度取整數
   const formatTemp = (temp: number) => `${Math.round(temp)}°`;
 

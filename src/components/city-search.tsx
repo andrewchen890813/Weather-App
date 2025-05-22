@@ -17,14 +17,18 @@ import { format } from "date-fns/format";
 import { useFavorite } from "@/hooks/use-favorite";
 
 const CitySearch = () => {
+  // 搜尋 Model 開關
   const [open, setOpen] = useState(false);
+  // 搜尋關鍵字
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
 
+  // 搜尋結果狀態
   const { data: locations, isLoading } = useLocationSearch(query);
 
   const { history, clearHistory, addToHistory } = useSearchHistory();
 
+  // 跳轉頁面
   const handleSelect = (cityData: string) => {
     const [lat, lon, name, country] = cityData.split("|");
 
@@ -44,6 +48,7 @@ const CitySearch = () => {
   const { favorites } = useFavorite();
   return (
     <>
+      {/* header搜尋框 */}
       <Button
         onClick={() => setOpen(true)}
         variant="outline"
@@ -52,12 +57,15 @@ const CitySearch = () => {
         <Search className="mr-2 h-4 w-4" />
         Search cities
       </Button>
+      {/* 搜尋 Modal */}
       <CommandDialog open={open} onOpenChange={setOpen}>
+        {/* 搜尋輸入框 */}
         <CommandInput
           placeholder="Search cities..."
           value={query}
           onValueChange={setQuery}
         />
+        {/* 搜尋清單 */}
         <CommandList>
           {query.length > 2 && !isLoading && (
             <CommandEmpty>No results found.</CommandEmpty>
@@ -133,7 +141,7 @@ const CitySearch = () => {
               <CommandSeparator />
             </>
           )}
-
+          {/* 搜尋推薦 */}
           {locations && locations.length > 0 && (
             <CommandGroup heading="Suggestions">
               {isLoading && (
