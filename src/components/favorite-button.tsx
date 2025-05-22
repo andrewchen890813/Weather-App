@@ -34,7 +34,7 @@ const FavoriteButton = ({ data }: FavoriteButtonProps) => {
       className={
         isCurrentlyFavorite
           ? "bg-yellow-500 hover:bg-yellow-600 cursor-pointer"
-          : ""
+          : "cursor-pointer"
       }
       onClick={handleToggleFavorite}
     >
