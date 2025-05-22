@@ -13,7 +13,7 @@ interface SearchHistoryItem {
 }
 
 export function useSearchHistory() {
-  // 設定歷史搜尋 localStorage key,初始值
+  // 設定歷史搜尋 localStorage (key,初始值)
   const [history, setHistory] = useLocalStorage<SearchHistoryItem[]>(
     "search-history",
     []
@@ -21,12 +21,14 @@ export function useSearchHistory() {
 
   // 取得 React Query 快取資料
   const queryClient = useQueryClient();
+
   // 設定歷史蒐尋的快取
   const historyQuery = useQuery({
     queryKey: ["search-history"],
     queryFn: () => history,
     initialData: history,
   });
+
   const addToHistory = useMutation({
     // 產生搜尋資料
     mutationFn: async (
@@ -49,6 +51,7 @@ export function useSearchHistory() {
       queryClient.setQueryData(["search-history"], newHistory);
     },
   });
+  // 刪除搜尋資料
   const clearHistory = useMutation({
     mutationFn: async () => {
       setHistory([]);
