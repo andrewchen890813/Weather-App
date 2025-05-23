@@ -13,7 +13,7 @@ interface FavoriteCityTabletProps {
   lon: number;
   onRemove: (id: string) => void;
 }
-
+// 收藏列表
 const FavoriteCities = () => {
   const { favorites, removeFavorite } = useFavorite();
   if (!favorites.length) {
@@ -39,6 +39,7 @@ const FavoriteCities = () => {
     </>
   );
 };
+// 收藏卡片
 function FavoriteCityTablet({
   id,
   name,
@@ -57,7 +58,7 @@ function FavoriteCityTablet({
       className="relative flex min-w-[250px] cursor-pointer items-center gap-3 rounded-lg border bg-card p-4 pr-8 shadow-sm transition-all hover:shadow-md"
     >
       <Button
-        className="absolute right-1 top-1 h-6 w-6  rounded-full p-0"
+        className="absolute right-1 top-1 h-6 w-6  rounded-full p-0 cursor-pointer"
         onClick={(e) => {
           e.stopPropagation();
           onRemove(id);
