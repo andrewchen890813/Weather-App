@@ -1,54 +1,51 @@
-# React + TypeScript + Vite
+# 🌤️ 天氣預報網站
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+一個現代化的天氣網站，使用 **React + TypeScript** 開發，整合 OpenWeatherMap API，可即時取得使用者所在位置的天氣資訊與未來幾小時的氣溫預測。具備快取功能與本地儲存收藏紀錄，並採用自訂 Hook 實現模組化開發。
 
-Currently, two official plugins are available:
+> 🔍 自動偵測地理位置，顯示當地天氣  
+> 📈 支援即時刷新與溫度趨勢圖表  
+> 💾 收藏與搜尋紀錄皆保存在 localStorage 中
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🔗 線上體驗
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+👉(https://weather-app-andrew.web.app/)
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## ✅ 功能特色
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- 📍 自動偵測使用者位置（Geolocation API）
+- 🌤️ 顯示目前天氣（溫度、氣象圖示、天氣描述）
+- 📊 小時氣溫預測圖表（當日未來幾小時）
+- 🗺️ 透過座標反查地名（Reverse Geocoding）
+- 🔄 一鍵重新整理天氣資料
+- 💾 收藏地點與搜尋紀錄儲存在 LocalStorage
+- ⚡ React Query 快取與異步資料處理
+- ✅ 錯誤處理與 loading 狀態提示
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+---
+
+## 🧱 技術架構
+
+| 技術               | 用途說明                   |
+| ------------------ | -------------------------- |
+| React + TypeScript | 網站主體與型別安全         |
+| React Query        | API 快取與狀態管理         |
+| Tailwind CSS       | UI 樣式與響應式排版        |
+| OpenWeatherMap API | 天氣資料來源               |
+| Geolocation API    | 取得使用者目前位置         |
+| LocalStorage       | 收藏與歷史搜尋資料本地儲存 |
+
+---
+
+## 📂 專案結構
+
+src/
+├── api/ # 封裝天氣與位置 API
+├── hooks/ # 自訂 hooks（如 useGeolocation）
+├── components/ # UI 元件
+├── lib/ # 公用方法與 constants
+├── pages/ # 頁面主體
+├── types/ # TypeScript 類型定義

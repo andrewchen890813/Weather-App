@@ -20,7 +20,7 @@ class WeatherAPI {
   //   發送請求
   private async fetchData<T>(url: string): Promise<T> {
     const response = await fetch(url);
-
+    // 表示 HTTP 狀態碼是否為 200～299
     if (!response.ok) {
       throw new Error(`Weather API Error:${response.statusText}`);
     }
