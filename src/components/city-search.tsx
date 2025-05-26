@@ -42,7 +42,7 @@ const CitySearch = () => {
     });
 
     setOpen(false);
-    navigate(`/city/${name}?lat=${lat}&${lon}`);
+    navigate(`/city/${name}?lat=${lat}&lon=${lon}`);
   };
 
   const { favorites } = useFavorite();

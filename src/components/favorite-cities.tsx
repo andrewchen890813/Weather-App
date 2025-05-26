@@ -53,7 +53,7 @@ function FavoriteCityTablet({
 
   return (
     <div
-      onClick={() => navogate(`/city/${name}?lat=${lat}%lon=${lon}`)}
+      onClick={() => navogate(`/city/${name}?lat=${lat}&lon=${lon}`)}
       role="button"
       tabIndex={0}
       className="relative flex min-w-[250px] cursor-pointer items-center gap-3 rounded-lg border bg-card p-4 pr-8 shadow-sm transition-all hover:shadow-md"
