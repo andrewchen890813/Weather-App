@@ -18,8 +18,8 @@ const WeatherDashboard = () => {
   // 使用者位置狀態
   const {
     coordinates,
-    error: loacationError,
-    isLoading: loacationLoading,
+    error: locationError,
+    isLoading: locationLoading,
     getLocation,
   } = useGeolocation();
 
@@ -39,18 +39,18 @@ const WeatherDashboard = () => {
   };
 
   // 加載動畫
-  if (loacationLoading) {
+  if (locationLoading) {
     return <WeatherSkeleton />;
   }
 
   // 錯誤警告
-  if (loacationError) {
+  if (locationError) {
     return (
       <Alert variant="destructive">
         <AlertCircle className="h-4 w-4" />
         <AlertTitle>Location Error</AlertTitle>
         <AlertDescription className="flex flex-col gap-4">
-          <p>{loacationError}</p>
+          <p>{locationError}</p>
           <Button onClick={getLocation} variant={"outline"} className="w-fit">
             <MapPin className="mr-2 h-4 w-4" />
             Enable Location
